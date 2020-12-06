@@ -11,14 +11,14 @@ Implementation of the 10-armed bandit problem from "Reinforcement Learning: An I
   - reward distribution,
   - reward noise distribution
 
-- The usage of Numba jit-compiler makes the testbed very fast. An experiment with a 10 armed bandit, for 3 different epsilons with with 2000 runs for 1000 steps each takes only 1.32 sec compared to 77.6 seconds without Numba
+- Very fast. Using Numba jit-compiler makes this testbed very fast. An experiment with a 10 armed bandit, for 3 different epsilons with with 2000 runs for 1000 steps each takes only 1.32 sec compared to 77.6 seconds without Numba
 
 
 ## Description
 To roughly assess the relative effectiveness of the greedy and ε-greedy methods, we compare them numerically on a suite of test problems. This was a set of 2000 randomly generated k-armed bandit problems with k = 10.
 
-For each bandit problem the action values, $q_∗(a)$&emsp;$a = 1, . . . , 10$, were selected according to a normal (Gaussian) distribution with mean 0 and variance 1.  
-Then, when a learning method applied to that problem selected action $A_t$ at time step t, the actual reward, $R_t$, was selected from a normal distribution with mean $q_∗(A_t)$ and variance 1.  
+For each bandit problem the action values, q∗(a) a = 1, . . . , 10, were selected according to a normal (Gaussian) distribution with mean 0 and variance 1.  
+Then, when a learning method applied to that problem selected action At at time step t, the actual reward, Rt, was selected from a normal distribution with mean q∗(At) and variance 1.  
 These distributions are shown in Figure 1.
 
 ![figure1](charts/figure1.png)  
