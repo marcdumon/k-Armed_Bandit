@@ -11,7 +11,29 @@ Implementation of the 10-armed bandit problem from "Reinforcement Learning: An I
   - reward distribution,
   - reward noise distribution
 
-- Very fast. Using Numba jit-compiler makes this testbed very fast. An experiment with a 10 armed bandit, for 3 different epsilons with with 2000 runs for 1000 steps each takes only 1.32 sec compared to 77.6 seconds without Numba
+- Very fast. Using the Numba jit-compiler makes this testbed very fast. An experiment with a 10 armed bandit, for 3 different epsilons with with 2000 runs for 1000 steps each takes only 1.32 sec compared to 77.6 seconds without Numba
+
+## Usage
+The [10-armed_bandit_problem](10-armed_bandit_problem.ipynb) notebook shows how to replicate the relevant part from the "Reinforcement Learning: An Introduction" textbook.   
+To run your own experiments:
+
+```python
+import numpy as np
+from k_armed_bandit_testbed import run_experiment
+
+n_runs = 2000
+n_time_steps = 1000
+k = 10
+epsilons = [0., 0.01, 0.1]
+mean = 0.
+std = 1.
+noise_std = 1.
+results = np.zeros([2, len(epsilons), n_time_steps])
+for i, e in enumerate(epsilons):
+    reward_history, optimal_action_history = run_experiment(k, mean, std, noise_std, n_runs, n_time_steps, e)
+    results[0, i] = reward_history /  n_runs
+    results[1, i] = optimal_action_history  / n_runs
+```
 
 
 ## Description
